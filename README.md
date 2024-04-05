@@ -33,13 +33,13 @@ Now, let's create a new folder for our project:
 ```bash
 mkdir myproject
 cd myproject
-```sh
+```
 
 Initialize Git
 Once you have navigated to the correct folder, you can initialize Git on that folder:
 ```bash
 git init 
-```sh
+```
 You just created your first Git Repository!
 
 Note: Git now knows that it should watch the folder you initiated it on.
@@ -67,3 +67,6 @@ vi index.html
 **ls** will list the files in the directory. We can see that _index.html_ is there.
 
 Then we check the Git _status_ and see if it is a part of our repo:
+```bash
+git status
+```
