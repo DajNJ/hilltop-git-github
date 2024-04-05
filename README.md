@@ -70,3 +70,10 @@ Then we check the Git _status_ and see if it is a part of our repo:
 ```bash
 git status
 ```
+Now Git is aware of the file, but has not added it to our repository!
+
+Files in your Git repository folder can be in one of 2 states:
+
+- Tracked - files that Git knows about and are added to the repository
+- Untracked - files that are in your working directory, but not added to the repository
+ When you first add files to an empty repository, they are all untracked. To get Git to track them, you need to stage them, or add them to the staging environment.
