@@ -18,13 +18,13 @@ Git is a popular version control system. It was created by Linus Torvalds in 200
 
 Git Install
 You can download Git for free from the following website: https://www.git-scm.com/
-´´´bash
+```bash
 git --version
 git version 2.30.2.windows.1
-´´´
+```
 Configure Git
 Now let Git know who you are. This is important for version control systems, as each Git commit uses this information:
-´´´bash
+```bash
 git config --global user.name "w3schools-test"
 git config --global user.email "test@w3schools.com"
-´´´
+```
