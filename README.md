@@ -20,7 +20,6 @@ Git Install
 You can download Git for free from the following website: https://www.git-scm.com/
 ```bash
 git --version
-git version 2.30.2.windows.1
 ```
 Configure Git
 Now let Git know who you are. This is important for version control systems, as each Git commit uses this information:
@@ -28,3 +27,43 @@ Now let Git know who you are. This is important for version control systems, as 
 git config --global user.name "w3schools-test"
 git config --global user.email "test@w3schools.com"
 ```
+Creating Git Folder
+Now, let's create a new folder for our project:
+
+```bash
+mkdir myproject
+cd myproject
+```sh
+
+Initialize Git
+Once you have navigated to the correct folder, you can initialize Git on that folder:
+```bash
+git init 
+```sh
+You just created your first Git Repository!
+
+Note: Git now knows that it should watch the folder you initiated it on.
+
+Git creates a hidden folder to keep track of changes.
+
+```bash
+vi index.html
+```
+
+```bash
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+
+<h1>Hello world!</h1>
+<p>This is the first file in my new Git Repo.</p>
+
+</body>
+</html>
+```
+**ls** will list the files in the directory. We can see that _index.html_ is there.
+
+Then we check the Git _status_ and see if it is a part of our repo:
