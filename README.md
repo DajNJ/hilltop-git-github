@@ -109,3 +109,16 @@ git statusgit add --all
 ```bash
 git commit -m "First release of Hello World!"
 ```
+## Git Commit Log
+To view the history of commits for a repository, you can use the log command:
+```bash
+git log
+```
+
+## Git Help
++ If you are having trouble remembering commands or options for commands, you can use Git help.
+
++ There are a couple of different ways you can use the help command in command line:
+
+**git command -help** -  See all the available options for the specific command
+**git help --all** -  See all possible commands
