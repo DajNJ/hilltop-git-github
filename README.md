@@ -35,7 +35,7 @@ mkdir myproject
 cd myproject
 ```
 
-Initialize Git
+## Initialize Git
 Once you have navigated to the correct folder, you can initialize Git on that folder:
 ```bash
 git init 
@@ -176,7 +176,6 @@ We can see the new branch with the name "hello-world-images", but the * beside m
 
 checkout is the command used to check out a branch. Moving us from the current branch, to the one specified at the end of the command:
 
-Example
 ```sh
 git checkout hello-world-images
 ```
@@ -233,15 +232,15 @@ git checkout master
 
 See how easy it is to work with branches? And how this allows you to work on different things?
 
-Emergency Branch
+### Emergency Branch
 Now imagine that we are not yet done with hello-world-images, but we need to fix an error on master.
 
 I don't want to mess with master directly, and I do not want to mess with hello-world-images, since it is not done yet.
 
 So we create a new branch to deal with the emergency:
-
-Example
+```sh
 git checkout -b emergency-fix
+```
 Switched to a new branch 'emergency-fix'
 Now we have created a new branch from master, and changed to it. We can safely fix the error without disturbing the other branches.
 
@@ -290,11 +289,10 @@ git branch -d emergency-fix
 ```
 # Merge Conflict
 Now we can move over to hello-world-images and keep working. Add another image file (img_hello_git.jpg) and change index.html, so it shows it:
-
-Example
+```sh
 git checkout hello-world-images
-Switched to branch 'hello-world-images'
-Example
+```
+```sh
 <!DOCTYPE html>
 <html>
 <head>
@@ -311,43 +309,25 @@ Example
 
 </body>
 </html>
+```
 Now, we are done with our work here and can stage and commit for this branch:
 
-Example
+```sh
 git add --all
 git commit -m "added new image"
-[hello-world-images 1f1584e] added new image
- 2 files changed, 1 insertion(+)
- create mode 100644 img_hello_git.jpg
-We see that index.html has been changed in both branches. Now we are ready to merge hello-world-images into master. But what will happen to the changes we recently made in master?
-
-Example
+```
++ We see that index.html has been changed in both branches. Now we are ready to merge hello-world-images into master. But what will happen to the changes we recently made in master?
+```sh
 git checkout master
 git merge hello-world-images
-Auto-merging index.html
-CONFLICT (content): Merge conflict in index.html
-Automatic merge failed; fix conflicts and then commit the result.
-The merge failed, as there is conflict between the versions for index.html. Let us check the status:
-
-Example
+```
++ The merge failed, as there is conflict between the versions for index.html. Let us check the status:
+ ```sh 
 git status
-On branch master
-You have unmerged paths.
-  (fix conflicts and run "git commit")
-  (use "git merge --abort" to abort the merge)
+```
++ This confirms there is a conflict in index.html, but the image files are ready and staged to be committed.
++ So we need to fix that conflict. Open the file in our editor:
 
-Changes to be committed:
-        new file:   img_hello_git.jpg
-        new file:   img_hello_world.jpg
-
-Unmerged paths:
-  (use "git add ..." to mark resolution)
-        both modified:   index.html
-This confirms there is a conflict in index.html, but the image files are ready and staged to be committed.
-
-So we need to fix that conflict. Open the file in our editor:
-
-Example
 <!DOCTYPE html>
 <html>
 <head>
