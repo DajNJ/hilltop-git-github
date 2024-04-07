@@ -358,18 +358,59 @@ git remote add origin
 ```sh
 git push --set-upstream origin master
 ```
++ Now, go back into GitHub and see that the repository has been updated:
 
+# Pulling to Keep up-to-date with Changes
+## Pulling to Keep up-to-date with Changes
++ When working as a team on a project, it is important that everyone stays up to date.
++ Any time you start working on a project, you should get the most recent changes to your local copy.
 
+With Git, you can do that with **pull**.
 
+**Pull** is a combination of 2 different commands:
 
++ **fetch**
++ **merge**
+Let's take a closer look into how fetch, merge, and pull works.
 
+## Git Fetch
+**fetch** gets all the change history of a tracked branch/repo.
 
+So, on your local Git, **fetch** updates to see what has changed on GitHub:
 
+```sh
+git fetch origin
+```
+Now that we have the recent changes, we can check our status:
 
+```sh
+git status
+```
+We are behind the origin/master by 1 commit. That should be the updated README.md, but lets double check by viewing the log:
 
+```sh
+git log origin/master
+```
++ That looks as expected, but we can also verify by showing the differences between our local master and origin/master:
 
+```sh
+git diff origin/master
+```
+That looks precisely as expected! Now we can safely merge.
 
-
-
+## Git Merge
++ merge combines the current branch, with a specified branch.
++ We have confirmed that the updates are as expected, and we can merge our current branch (master) with origin/master:
+```sh
+git merge origin/master
+```
+Check our status again to confirm we are up to date:
+## Git Pull
++ But what if you just want to update your local repository, without going through all those steps?
++ pull is a combination of fetch and merge. It is used to pull all changes from a remote repository into the branch you are working on.
++ Make another change to the Readme.md file on GitHub.
+```sh
+git pull origin
+```
 
 
