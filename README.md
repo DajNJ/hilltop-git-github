@@ -327,69 +327,19 @@ git status
 ```
 + This confirms there is a conflict in index.html, but the image files are ready and staged to be committed.
 + So we need to fix that conflict. Open the file in our editor:
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Hello World!</title>
-<link rel="stylesheet" href="bluestyle.css">
-</head>
-<body>
-
-<h1>Hello world!</h1>
-<div><img src="img_hello_world.jpg" alt="Hello World from Space" style="width:100%;max-width:960px"></div>
-<p>This is the first file in my new Git Repo.</p>
-<<<<<<< HEAD
-<p>This line is here to show how merging works.</p>
-=======
-<p>A new line in our file!</p>
-<div><img src="img_hello_git.jpg" alt="Hello Git" style="width:100%;max-width:640px"></div>
->>>>>>> hello-world-images
-
-</body>
-</html>
-We can see the differences between the versions and edit it like we want:
-
-Example
-<!DOCTYPE html>
-<html>
-<head>
-<title>Hello World!</title>
-<link rel="stylesheet" href="bluestyle.css">
-</head>
-<body>
-
-<h1>Hello world!</h1>
-<div><img src="img_hello_world.jpg" alt="Hello World from Space" style="width:100%;max-width:960px"></div>
-<p>This is the first file in my new Git Repo.</p>
-<p>This line is here to show how merging works.</p>
-<div><img src="img_hello_git.jpg" alt="Hello Git" style="width:100%;max-width:640px"></div>
-
-</body>
-</html>
-Now we can stage index.html and check the status:
-
-Example
++ Now we can stage index.html and check the status:
+ ```sh 
 git add index.html
 git status
-On branch master
-All conflicts fixed but you are still merging.
-  (use "git commit" to conclude merge)
+```
 
-Changes to be committed:
-        new file:   img_hello_git.jpg
-        new file:   img_hello_world.jpg
-        modified:   index.html
-The conflict has been fixed, and we can use commit to conclude the merge:
-
-Example
++ The conflict has been fixed, and we can use commit to conclude the merge:
+ ```sh
 git commit -m "merged with hello-world-images after fixing conflicts"
-[master e0b6038] merged with hello-world-images after fixing conflicts
-And delete the hello-world-images branch:
-
-Example
+```
++ And delete the hello-world-images branch:
+ ```sh
 git branch -d hello-world-images
-Deleted branch hello-world-images (was 1f1584e).
-Now you have a better understanding of how branches and merging works. Time to start working with a remote repository!
+```
++ Now you have a better understanding of how branches and merging works. Time to start working with a remote repository!
 
-Test Yourself With Exercises
