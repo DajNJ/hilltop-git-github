@@ -343,3 +343,33 @@ git branch -d hello-world-images
 ```
 + Now you have a better understanding of how branches and merging works. Time to start working with a remote repository!
 
+# Git GitHub Getting Started
+https://www.github.com/
+## Create a Repository on GitHub
++ Now that you have made a GitHub account, sign in, and create a new Repo:
++ Push Local Repository to GitHub
++ Since we have already set up a local Git repo, we are going to push that to GitHub:
+```sh
+git remote add origin 
+```
+**git remote add origin URL** specifies that you are adding a remote repository, with the specified **URL**, as an **origin** to your local Git repo.
+
++ Now we are going to push our master branch to the origin url, and set it as the default remote branch:
+```sh
+git push --set-upstream origin master
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
