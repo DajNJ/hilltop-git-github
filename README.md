@@ -75,7 +75,7 @@ Now Git is aware of the file, but has not added it to our repository!
 
 Files in your Git repository folder can be in one of 2 states:
 
-- Tracked - files that Git knows about and are added to the repository
+- `Tracked` - files that Git knows about and are added to the repository
 - Untracked - files that are in your working directory, but not added to the repository
  When you first add files to an empty repository, they are all untracked. To get Git to track them, you need to stage them, or add them to the staging environment.
 ```bash
@@ -116,7 +116,7 @@ git log
 ```
 
 ## Git Help
-+ If you are having trouble remembering commands or options for commands, you can use Git help.
++ If you are having trouble remembering commands or options for commands, you can use `git help`.
 
 + There are a couple of different ways you can use the help command in command line:
 
@@ -132,7 +132,7 @@ Let's say you have a large project, and you need to update the design on it.
 Make copies of all the relevant files to avoid impacting the live version
 Start working with the design and find that code depend on code in other files, that also need to be changed!
 Make copies of the dependant files as well. Making sure that every file dependency references the correct file name
-EMERGENCY! There is an unrelated error somewhere else in the project that needs to be fixed ASAP!
+`EMERGENCY!` There is an unrelated error somewhere else in the project that needs to be fixed ASAP!
 Save all your files, making a note of the names of the copies you were working on
 Work on the unrelated error and update the code to fix it
 Go back to the design, and finish the work there
@@ -184,7 +184,7 @@ Now we have moved our current workspace from the master branch, to the new branc
 
 Open your favourite editor and make some changes.
 
-For this example, we added an image (img_hello_world.jpg) to the working folder and a line of code in the index.html file:
+For this example, we added an image (img_hello_world.jpg) to the working folder and a line of code in the `index.html` file:
 ```sh
 <!DOCTYPE html>
 <html>
@@ -218,8 +218,8 @@ git commit -m "Added image to Hello World"
 + Now let's see just how quick and easy it is to work with different branches, and how well it works.
 + We are currently on the branch hello-world-images. We added an image to this branch, so let's list the files in the current directory:
 
-**ls**
-**README.md  bluestyle.css  img_hello_world.jpg  index.html**
+`ls`
+`README.md` `bluestyle.css` `img_hello_world.jpg` `index.html`     
 + We can see the new file img_hello_world.jpg, and if we open the html file, we can see the code has been altered. All is as it should be.
 
 + Now, let's see what happens when we change branch to master
@@ -228,7 +228,7 @@ git checkout master
 ```
 + The new image is not a part of this branch. List the files in the current directory again:
 **ls**
-+ img_hello_world.jpg is no longer there! And if we open the html file, we can see the code reverted to what it was before the alteration.
++ `img_hello_world.jpg` is no longer there! And if we open the html file, we can see the code reverted to what it was before the alteration.
 
 See how easy it is to work with branches? And how this allows you to work on different things?
 
@@ -273,7 +273,7 @@ git add index.html
 ```
 
 # Merge Branches
-+ We have the emergency fix ready, and so let's merge the master and emergency-fix branches.
++ We have the emergency fix ready, and so let's merge the `master` and `emergency-fix branches`.
 + First, we need to change to the master branch:
 ```sh
 git checkout master
@@ -352,7 +352,7 @@ https://www.github.com/
 ```sh
 git remote add origin 
 ```
-**git remote add origin URL** specifies that you are adding a remote repository, with the specified **URL**, as an **origin** to your local Git repo.
+**git remote add origin URL** specifies that you are adding a remote repository, with the specified `URL`, as an `origin` to your local Git repo.
 
 + Now we are going to push our master branch to the origin url, and set it as the default remote branch:
 ```sh
@@ -365,7 +365,7 @@ git push --set-upstream origin master
 + When working as a team on a project, it is important that everyone stays up to date.
 + Any time you start working on a project, you should get the most recent changes to your local copy.
 
-With Git, you can do that with **pull**.
+With Git, you can do that with `pull`.
 
 **Pull** is a combination of 2 different commands:
 
@@ -374,9 +374,9 @@ With Git, you can do that with **pull**.
 Let's take a closer look into how fetch, merge, and pull works.
 
 ## Git Fetch
-**fetch** gets all the change history of a tracked branch/repo.
+`fetch`gets all the change history of a tracked branch/repo.
 
-So, on your local Git, **fetch** updates to see what has changed on GitHub:
+So, on your local Git, `fetch` updates to see what has changed on GitHub:
 
 ```sh
 git fetch origin
@@ -386,12 +386,12 @@ Now that we have the recent changes, we can check our status:
 ```sh
 git status
 ```
-We are behind the origin/master by 1 commit. That should be the updated README.md, but lets double check by viewing the log:
+We are behind the origin/master by 1 commit. That should be the updated `README.md` , but lets double check by viewing the log:
 
 ```sh
 git log origin/master
 ```
-+ That looks as expected, but we can also verify by showing the differences between our local master and origin/master:
++ That looks as expected, but we can also verify by showing the differences between our local master and `origin/master`:
 
 ```sh
 git diff origin/master
