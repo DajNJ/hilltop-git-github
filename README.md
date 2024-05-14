@@ -97,7 +97,8 @@ margin-left: 20px;
 ```
 + Now add all files in the current directory to the Staging Environment:
 ```bash
-git statusgit add --all
+git status
+git add --all
 ```
 + Using --all instead of individual filenames will stage all changes (new, modified, and deleted) files.
 
@@ -162,24 +163,24 @@ We are working in our local repository, and we do not want to disturb or possibl
 
 So we create a new branch:
 ```sh
-git branch hello-world-images
+git branch dev_hello-world
 ```
-Now we created a new branch called "hello-world-images"
+Now we created a new branch called "dev_hello-world"
 
 Let's confirm that we have created a new branch:
 
 **Example**
 git branch
-  hello-world-images
+  dev_hello-world
 * master
-We can see the new branch with the name "hello-world-images", but the * beside master specifies that we are currently on that branch.
+We can see the new branch with the name "dev_hello-world", but the * beside master specifies that we are currently on that branch.
 
 checkout is the command used to check out a branch. Moving us from the current branch, to the one specified at the end of the command:
 
 ```sh
-git checkout hello-world-images
+git checkout dev_hello-world
 ```
-Switched to branch 'hello-world-images'
+Switched to branch 'dev_hello-world'
 Now we have moved our current workspace from the master branch, to the new branch
 
 Open your favourite editor and make some changes.
