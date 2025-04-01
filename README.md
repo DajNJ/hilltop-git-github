@@ -25,6 +25,11 @@ Git is a **distributed version control system (DVCS)** that helps developers tra
 
 ### **1. Installation**
 Download Git from [git-scm.com](https://git-scm.com/) and verify:
+- or
+- ```bash
+sudo yum install git -y
+# install on a linux server
+```
 ```bash
 git --version
 # Should show e.g. "git version 2.39.2"
@@ -43,7 +48,7 @@ mkdir my-project
 cd my-project
 git init  # Initializes empty Git repo
 ```
-
+- this command will create the .git dir which helps to tracl all changes
 ---
 
 ## **Basic Git Workflow with Files**
