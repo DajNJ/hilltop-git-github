@@ -1,128 +1,191 @@
-# **Git: A Complete Guide from Basics to Advanced Workflows**
+# **Git: A Complete Guide from Basics to Advanced Workflows**  
 
-## **Introduction to Git**
+## **Introduction to Git**  
 
-### **What is Git?**
-Git is a **distributed version control system (DVCS)** that helps developers track changes in their codebase. Created by **Linus Torvalds** in 2005, Git allows:
-- Tracking every modification to files
-- Collaborating with other developers
-- Reverting to previous versions when needed
-- Managing multiple parallel development streams
+### **What is Git?**  
+Git is a **distributed version control system (DVCS)** that helps developers track changes in their codebase. Created by **Linus Torvalds** in 2005, Git allows:  
+- Tracking every modification to files  
+- Collaborating with other developers  
+- Reverting to previous versions when needed  
+- Managing multiple parallel development streams  
 
-### **Why Use Git?**
-- **Version History:** Never lose previous work
-- **Team Collaboration:** Multiple people can work simultaneously
-- **Branching:** Isolate features/bug fixes without affecting main code
-- **Open Source:** Free and widely adopted (used by >90% of developers)
+### **Why Use Git?**  
+- **Version History:** Never lose previous work  
+- **Team Collaboration:** Multiple people can work simultaneously  
+- **Branching:** Isolate features/bug fixes without affecting main code  
+- **Open Source:** Free and widely adopted (used by >90% of developers)  
 
-### **Git vs GitHub**
-- **Git:** The version control software that runs locally
-- **GitHub/GitLab/Bitbucket:** Cloud platforms that host Git repositories with additional features
+### **Git vs GitHub**  
+- **Git:** The version control software that runs locally  
+- **GitHub/GitLab/Bitbucket:** Cloud platforms that host Git repositories with additional features  
 
 ---
 
-## **Getting Started with Git**
+## **Getting Started with Git**  
 
-### **1. Installation**
-Download Git from [git-scm.com](https://git-scm.com/) and verify:
-- or
-- ```bash
-sudo yum install git -y
-# install on a linux server
-```
+### **1. Installation**  
+Download Git from [git-scm.com](https://git-scm.com/) and verify:  
+
+**Windows/macOS:**  
+- Download and run the installer  
+
+**Linux (Debian/Ubuntu):**  
 ```bash
-git --version
-# Should show e.g. "git version 2.39.2"
-```
+sudo apt update && sudo apt install git -y
+```  
 
-### **2. Configuration**
-Set your identity (used in commits):
+**Linux (RHEL/CentOS):**  
+```bash
+sudo yum install git -y
+```  
+
+Verify installation:  
+```bash
+git --version  # Should show e.g., "git version 2.39.2"
+```  
+
+### **2. Configuration**  
+Set your identity (used in commits):  
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
-```
+```  
 
-### **3. Creating Your First Repository**
+Optional settings:  
+```bash
+git config --global core.editor "code --wait"  # Use VS Code as default editor
+git config --global init.defaultBranch "main"  # Set default branch name
+```  
+
+View your Git config:  
+```bash
+git config --list
+```  
+
+### **3. Creating Your First Repository**  
+Initialize a new repository:  
 ```bash
 mkdir my-project
 cd my-project
-git init  # Initializes empty Git repo
-```
-- this command will create the .git dir which helps to tracl all changes
+git init  # Creates a hidden .git directory
+```  
+
+Check repository status:  
+```bash
+git status
+```  
+
 ---
 
-## **Basic Git Workflow with Files**
+## **Basic Git Workflow with Files**  
 
-### **Scenario 1: Creating and Tracking a Single File**
-1. **Create a new file:**
+### **Scenario 1: Creating and Tracking a Single File**  
+1. **Create a new file:**  
    ```bash
    touch README.md
-   ```
+   ```  
 
-2. **Add content:**
+2. **Add content:**  
    ```bash
    echo "# My Project" >> README.md
-   ```
+   ```  
 
-3. **Check status:**
+3. **Check status:**  
    ```bash
-   git status  # Shows README.md as untracked
-   ```
+   git status  # Shows README.md as "untracked"
+   ```  
 
-4. **Stage the file:**
+4. **Stage the file:**  
    ```bash
    git add README.md
-   ```
+   ```  
 
-5. **Commit changes:**
+5. **Commit changes:**  
    ```bash
    git commit -m "Add project README"
-   ```
+   ```  
+
+6. **View commit history:**  
+   ```bash
+   git log  # Shows commit history with details
+   git log --oneline  # Compact view
+   ```  
 
 ---
 
-### **Scenario 2: Working with Multiple Files**
-1. **Create multiple files:**
+### **Scenario 2: Working with Multiple Files**  
+1. **Create multiple files:**  
    ```bash
    touch index.html style.css script.js
-   ```
+   ```  
 
-2. **Add content to each:**
+2. **Add content to each:**  
    ```bash
    echo "<!DOCTYPE html>" > index.html
    echo "body { color: red; }" > style.css
    echo "console.log('Hello')" > script.js
-   ```
+   ```  
 
-3. **Stage all files at once:**
+3. **Stage all files at once:**  
    ```bash
    git add .
-   ```
+   ```  
 
-4. **Commit together:**
+4. **Check staged changes:**  
+   ```bash
+   git status  # Shows files as "staged"
+   ```  
+
+5. **Commit together:**  
    ```bash
    git commit -m "Add initial website files"
-   ```
+   ```  
+
+6. **Unstage a file before committing (if needed):**  
+   ```bash
+   git reset HEAD style.css  # Removes style.css from staging
+   git status  # Now shows style.css as "not staged"
+   ```  
 
 ---
 
-### **Scenario 3: Modifying Existing Files**
-1. **Edit a file:**
+### **Scenario 3: Modifying and Undoing Changes**  
+1. **Edit a file:**  
    ```bash
    echo "<h1>Welcome</h1>" >> index.html
-   ```
+   ```  
 
-2. **Check changes:**
+2. **Check changes before staging:**  
    ```bash
    git diff  # Shows unstaged changes
-   ```
+   ```  
 
-3. **Stage and commit:**
+3. **Stage the modified file:**  
    ```bash
    git add index.html
-   git commit -m "Add heading to index.html"
-   ```
+   ```  
 
+4. **Check staged changes:**  
+   ```bash
+   git diff --staged  # Shows changes in staging
+   ```  
+
+5. **Commit changes:**  
+   ```bash
+   git commit -m "Add heading to index.html"
+   ```  
+
+6. **Undo the last commit (before pushing):**  
+   ```bash
+   git reset --soft HEAD~1  # Keeps changes staged
+   git reset --mixed HEAD~1  # Unstages changes (default)
+   git reset --hard HEAD~1  # Discards changes completely (use with caution!)
+   ```  
+
+7. **Revert a commit (safe undo for pushed commits):**  
+   ```bash
+   git revert <commit-hash>  # Creates a new commit undoing changes
+   ```  
 ---
 # **Git Branching: Concepts, Importance, and Naming Strategies**
 
