@@ -612,3 +612,72 @@ chmod +x .git/hooks/pre-commit
    ```
 
 ---
+# **GitHub Branch Protection Rules for GitFlow**
+
+To enforce GitFlow properly in GitHub, you need to configure branch protection rules that:
+1. Restrict direct pushes to `main`
+2. Only allow merges via Pull Requests (PRs)
+3. Require approvals for `main` merges
+4. Limit which branches can merge to `main` (only `release/*` and `hotfix/*`)
+
+## **Step-by-Step Setup**
+
+### **1. Navigate to Branch Protection Settings**
+1. Go to your GitHub repository
+2. Click **Settings** → **Branches**
+3. Under "Branch protection rules", click **Add rule**
+
+### **2. Configure Protection for `main` Branch**
+| Setting | Value | Purpose |
+|---------|-------|---------|
+| Branch name pattern | `main` | Applies to production branch |
+| Require a pull request before merging | ✅ Enabled | All changes must go through PR |
+| Require approvals | ✅ Enabled (set to 1 or more) | Ensures code review |
+| Dismiss stale pull request approvals | ✅ Enabled | Requires fresh approvals after changes |
+| Require approval from code owners | Optional | Extra layer of control |
+| Restrict who can dismiss reviews | Optional | Limit to maintainers |
+| Allow specified branches to merge | `release/*`, `hotfix/*` | GitFlow enforcement |
+| Require status checks to pass | Optional (recommended) | CI/CD requirements |
+| Require conversation resolution | ✅ Enabled | All comments must be addressed |
+| Require linear history | Optional | Prevents merge commits |
+| Include administrators | ✅ Enabled | Even repo admins must follow |
+
+### **3. Additional Recommended Rules**
+
+**For `develop` branch (same settings as above except):**
+- Branch name pattern: `develop`
+- Allow specified branches to merge: `feature/*`, `bugfix/*`, `hotfix/*`
+
+### **4. Alternative: Using GitHub Actions for Advanced Control**
+If you need more complex rules (like requiring specific PR labels), create a `.github/workflows/branch-protection.yml`:
+
+```yaml
+name: Enforce GitFlow Merges
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  check-merge-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify merge rules
+        run: |
+          # Only allow release/* and hotfix/* to merge to main
+          if [[ "$GITHUB_BASE_REF" == "main" && ! "$GITHUB_HEAD_REF" =~ ^release/.*|^hotfix/.* ]]; then
+            echo "::error::Only release/* or hotfix/* branches can merge to main"
+            exit 1
+          fi
+```
+
+## **How This Works in Practice**
+
+### **Allowed Merge Scenario**
+1. Developer creates `release/v1.2.0` from `develop`
+2. PR created: `release/v1.2.0` → `main`
+3. After 1+ approvals and CI passes, merge is allowed
+
+### **Blocked Merge Scenarios**
+- ❌ `feature/login` → `main` *(Fails: Not a release/hotfix branch)*
+- ❌ Direct push to `main` *(Fails: PR required)*
+- ❌ `release/v1.2.0` → `main` with no approvals *(Fails: Approval required)*
