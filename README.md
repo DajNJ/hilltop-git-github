@@ -667,10 +667,6 @@ Same settings as `main`, except:
 
 ---
 
-
----
-
-Let me know if you’d like this exported to markdown, or if you're using GitHub Enterprise, in which case you can also use branch rules via the REST or GraphQL API.
 ```
 
 ## **How This Works in Practice**
